@@ -1,82 +1,102 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 1: Civic data analysis
-
-## Due May 10th @10am
-
-## Business Case
-
-Your hometown mayor just created a new data analysis team to give policy advice, and the administration recruited _you_ via LinkedIn to join it. Unfortunately, due to budget constraints, for now the "team" is just you...
-
-The mayor wants to start a new initiative to move the needle on high school education outcomes.
-
-Also unfortunately, that is the entirety of what you've been told. And the mayor just went on a lobbyist-funded fact-finding trip in the Bahamas. In the meantime, you got your hands on a [few national datasets][data] on [SAT and ACT][background] scores. Start exploring these to look for useful patterns and [possible hypotheses][ps]!
-
----
-
-## Directions
-
-This project is focused on exploratory data analysis, aka "EDA". 
-
-EDA is an essential part of the data science analysis pipeline. Failure to perform EDA before modeling is almost guaranteed to lead to bad models and faulty conclusions. What you do in this project are good practices for all projects going forward, especially those after this bootcamp!
-
-Spend your time trying to understand your data, through both summary statistics and visualization. By the end, you will want to be familiar enough with the datasets that you can think of [testable hypotheses][ps] that could point in specific policy directions.
-
-We will be looking for the following things:
-
-- For statistics questions, Python code -- using pandas, numpy, scipy, and/or other libraries -- to calculate correct answers, with Markdown explaining your results
-- For plotting questions, labeled matplotlib plots displayed within your notebook, with Markdown interpreting the results
-
----
-
-## Requirements
-
-- Materials must be in a clearly commented Jupyter notebook
-  - Here, we provide you with [starter code](./code/starter-code.ipynb) in a Jupyter notebook that will help to guide your data exploration and analysis. **If you choose to edit the core structure of this notebook, make sure you don't exclude any of the requested operations**
-  - More on the *structure of your submission repo* [here][deliverables]
-- Students should demonstrate the ability to:
-
-    - Analyze diverse datasets & explicitly state your assumptions
-    - Form hypotheses and justify them with solid statistical testing in NumPy
-    - Visualize and interpret your plots using Matplotlib and Seaborn
-
-- You will also [present your findings][presentation] on May 10th
-    - Assume you are presenting to the mayor (i.e., a non-technical audience)
-    - You have up to **4 minutes** (absolutely no longer!)
-    - You can choose to present on either or both tests
-    - Your slides must be in google slides (absolutely no exceptions)
-      - Download as .pdf to upload your slides to your repository
-
-*TIP*: 4 minutes is not long.  Think about what is most important to talk about.  
-
----
-
-### Useful Resources
-
-- [Pandas cheatsheet: descriptive statistics](https://chrisalbon.com/code/python/data_wrangling/pandas_dataframe_descriptive_stats/)
-- [Matplotlib examples gallery](https://matplotlib.org/stable/gallery/index.html)
-- [Seaborn examples gallery](http://seaborn.pydata.org/examples/)
-
----
-
-### Project Feedback + Evaluation
-
-For all projects, students will be evaluated on a simple 4 point scale (0, 1, 2, or 3). Instructors will use this [rubric][rubric] when scoring student performance on each of the [core project **requirements**][rubric]:
-
- Score | Expectations
- ----- | ------------
- **0** | _Does not meet expectations. Try again._
- **1** | _Approaching expectations. Getting there..._
- **2** | _Meets expectations. Great job._
- **3** | _Exceeds expectations. Portfolio-ready!_
-
----
-
-### REMEMBER:
-
-This is a learning environment and you are encouraged to try new things, even if they don't work out as well as you planned! While this rubric outlines what we look for in a _good_ project, it is up to you to go above and beyond to create a _great_ project. **Learn from your failures and you'll be prepared to succeed in the workforce**.
-
-[data]: https://git.generalassemb.ly/DSIR-425/project_1/wiki/Data
-[deliverables]: https://git.generalassemb.ly/DSIR-425/project_1/wiki/Deliverables
-[rubric]: https://git.generalassemb.ly/DSIR-425/project_1/wiki/Rubric
-[presentation]: https://git.generalassemb.ly/DSIR-425/project_1/wiki/Presentation
-[ps]: https://git.generalassemb.ly/DSIR-425/project_1/wiki/Problem-Statement
-[background]: https://git.generalassemb.ly/DSIR-425/project_1/wiki/SAT-ACT-background
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "4eee1eee",
+   "metadata": {},
+   "source": [
+    "# Project 1: Georgia Education Outcome Strategy\n",
+    "\n",
+    "### Contents:\n",
+    "- [Problem Statement](#Problem-Statement)\n",
+    "- [Executive Summary](#Executive-Summary)\n",
+    "- [Conclusions and Recommendations](#Conclusions-and-Recommendations)\n",
+    "- [Data Dictionary](#Data-Dictionary)\n",
+    "- [Sources](#Sources)\n",
+    "\n",
+    "### Problem Statement\n",
+    "\n",
+    "Our great State of Georgia is at a crossroads. Education outcomes of our schools’ students is in increasingly under the microscope and we’ve just received a huge windfall in Federal Education funding.\n",
+    "What actions can the administration take using that funding to move the needle on education outcomes for the better? Specifically, our college acceptance numbers?\n",
+    "\n",
+    "### Executive Summary\n",
+    "\n",
+    "The workbook imports SAT scores by state for the years 2017-2019 and 2019 SAT scores by intended college major. All of these datasets were cleaned and the 3 state scores datasets merged. During this phase, 'Virgin Islands' and 'Puerto Rico' data were purged due to lack of completeness as they were only present in one of the three years.\n",
+    "<br><br>\n",
+    "Exploratory data analsysis was performed where it was found that participation rates were negatively correlated with total SAT score by state; since ACT is a more popular test in some states, the dataset was refocused to the 23 states that had 50% or more participation all three years. A similar filtering happened with the college major set where only 18 of the 38 majors were kept since they had over 1% of the total test takers; this was done to ensure we were dealing with large sections of the data.\n",
+    "<br><br>\n",
+    "With both datasets filtered to a more-focused state, conclusions were able to be drawn.\n",
+    "\n",
+    "### Conclusions and Recommendations\n",
+    "\n",
+    "Increasing college acceptance numbers will require either a boost in test scores or a boost in test takers, the analysis focused on the latter. Boosting test takers will come with an excpected decrease in average SAT score, which could hurt us with the public. By focusing on college majors with lower average SAT scores, we can accommodate the decreased average score with increased acceptances.\n",
+    "\n",
+    "Three areas of study were identified:\n",
+    "  *  Security and Protective Services\n",
+    "  *  Agriculture, AgricultureOperations, and Related Sciences\n",
+    "  *  Education\n",
+    "  \n",
+    "Armed with these three areas, there are 4 recommendations:<br>\n",
+    "- Boost SAT participation through sign-up drives and preparatory classes\n",
+    "- Increase interest in the identified areas through:\n",
+    "  *  themed classwork\n",
+    "  *  additional elective courses\n",
+    "  *  sponsored after-school programs and initiatives:\n",
+    "    *  Partnership with TSA in Atlanta\n",
+    "    *  Membership drive with 4H\n",
+    "    *  After-school programs and internships with Teach for America (TFA)\n",
+    "\n",
+    "### Data Dictionary\n",
+    "\n",
+    "|Feature|Type|Dataset|Description|\n",
+    "|---|---|---|---|\n",
+    "|**state**|&nbsp;*str*|sat_scores|The state in which the test scores were reported|\n",
+    "|**participation_rate**|*float*|sat_scores|The percent of seniors who graduated in the year being reported that participated in the exam<sup>1</sup>|\n",
+    "|**ebrw**|*int*|&nbsp;sat_scores, sat_2019_major|&nbsp;The average (mean) score of the SAT's \"Evidence-Based Reading and Writing\" portion (scale from 0-800)|\n",
+    "|**math**|*int*|sat_scores, sat_2019_major|The average (mean) score of the SAT's \"Math\" portion (scale from 0-800)|\n",
+    "|**total**|*int*|sat_scores, sat_2019_major|The average (mean) total SAT score (scale from 0-1600)|\n",
+    "|**year**|*str*|sat_scores, sat_2019_major|The year in which the test scores were reported|\n",
+    "|**intendedcollegemajor**|*str*|sat_2019_major|The college major a test taker intends to pursue|\n",
+    "|**testtakers**|*int*|sat_2019_major|The number of persons taking the test|\n",
+    "\n",
+    "\n",
+    "<font size = \"1.5\"> <sup>1</sup>https://blog.prepscholar.com/average-sat-scores-by-state-most-recent </font>\n",
+    "\n",
+    "\n",
+    "### Sources\n",
+    "2017 ACT Scores by State, 2018 ACT Scores by State, 2019 ACT Scores by State ([source](https://blog.prepscholar.com/act-scores-by-state-averages-highs-and-lows))<br>\n",
+    "2019 SAT Scores by Intended College Major ([source](https://reports.collegeboard.org/pdf/2019-total-group-sat-suite-assessments-annual-report.pdf))<br>\n",
+    "boom_readme ([source](https://git.generalassemb.ly/DSIR-425/project_1/blob/master/example_readmes/boom_readme.md))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d9f287fe",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
