@@ -1,0 +1,27 @@
+- project organization 3
+Good work here. You include a lot of markdown detailing your observations and your repo is structured well.
+
+- clarity of message 2
+Good work here as well. 1. Your problem statement was very Georgia centric which set me up for a Georgia focused analysis. Sometimes it was unclear how the information you were
+presenting related back to educational outcomes in Georgia which made for a somewhat confusing narrative.
+
+- python 2
+Good job on python. You show a strong understanding of all of the topics we have learned so far including masking and sorting. The main thing I noticed was when you used .apply().
+When using .apply() with a function just use that function instead of also using the lambda function. So do this .apply(percent_cleaner) instead of .apply(lambda x: percent_cleaner(x)).
+
+- data cleaning and eda 2
+Great work. You were thorough with your cleaning and it doesn't look like you missed any data cleaning issues. This project did ask you to use merge instead of concat but you made it
+work. Just make sure to know the difference between them and when to use each one. For your eda section you looked at a looked at a lot but you didn't always include interpretations of
+the information. This often made it confusing as to what I was supposed to be taking away from what I was seeing and how it related back to your analysis.
+
+- visualizations 3
+Great job on your visualizations. One note is for wrapping titles you can use the new line character "\n" to force a line break rather than importing text wrap.
+
+- research and conceptual 2
+Great job citing your sources. The one thing you could improve here is to include interpretations of your statistics right below where you show them so your reader knows
+right away what the takeaway is and how it builds and relates to your analysis.
+
+- presentation 3
+Great job on your presentation. The level of technicality was appropriate, your slides were formatted nicely and did not contain an overwhelming amount of information, and you
+provided context and humor in your delivery. The only thing of note was that you were a little bit over the time limit but everything else was so strong I'm still going to give you
+a 3 here.
